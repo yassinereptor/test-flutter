@@ -31,7 +31,9 @@ class ApiRemoteDataSource
       final response = await _dio.get(
         dotenv.env["API_LINK"]!
       );
-      return TillModel.fromJson(response.data);
+      if (response.statusCode != 200)
+        throw ServerExeption(status: response.statusCode!, message: response.statusMessage!);
+      return TillModel.fromJson(json.decode(response.data));
     } on DioError catch (e) {
       throw ServerExeption(
         status: e.hashCode,

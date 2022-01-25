@@ -55,8 +55,8 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
 
     yield state.copyWith(type: ApiStateType.loadingInProgress());
     (await _apiRepository
-        .getData()).fold((failure) {
-      failure = failure;
+        .getData()).fold((f) {
+      failure = f;
     }, (value) {
       tillModel = value;
     });
