@@ -8,6 +8,7 @@ abstract class INetworkInfo {
 
 @LazySingleton(as: INetworkInfo)
 class NetworkInfo implements INetworkInfo {
+  // Using (internet_connection_checker) package we can check network status
   final InternetConnectionChecker connectionChecker;
 
   NetworkInfo(this.connectionChecker);

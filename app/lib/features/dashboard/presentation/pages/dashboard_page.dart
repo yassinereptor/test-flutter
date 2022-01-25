@@ -23,21 +23,25 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   void initState() {
+    // Pull to refresh controller
     _refresherController = new RefreshController(initialRefresh: true);
     _apiBloc = getIt<ApiBloc>();
   }
 
   @override
   void dispose() {
+    // Close bloc after finishing using the stream
     _apiBloc.close();
     super.dispose();
   }
 
   void _onRefresh() async {
+    // Add event to invoke the getData function to get data from API
     _apiBloc..add(ApiEvent.getData());
   }
 
   void _onLoading() async {
+    // Add event to invoke the getData function to get data from API
     _apiBloc..add(ApiEvent.getData());
   }
 
@@ -48,6 +52,8 @@ class _DashboardPageState extends State<DashboardPage> {
       child: SafeArea(
         child: BlocBuilder<ApiBloc, ApiState>(
           builder: (context, state) {
+
+            // Build ui depends on the state of the HTTP request
             String message = "";
             state.type.maybeWhen(
               initial: () {
@@ -57,11 +63,13 @@ class _DashboardPageState extends State<DashboardPage> {
                 message = "Loading ...";
               },
               loadingSuccess: () {
+                // On success get data
                 _refresherController.refreshCompleted();
                 tillModel = state.tillModel;
                 message = "";
               },
               loadingFailed: (failure) {
+                // On error show a message
                 _refresherController.refreshFailed();
                 if (failure is ServerFailure)
                   message = "Server Error";
@@ -87,6 +95,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 child: ListView(
                   children: [
                     SizedBox(height: 5,),
+                    // Check if there is no orders
                     if (tillModel != null)
                       ...tillModel!.orders!.map((order) => OrderWidget(orderModel: order)).toList(),
                   ],

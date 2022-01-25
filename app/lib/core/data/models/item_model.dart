@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'item_model.g.dart';
 
+// Item Model
 @JsonSerializable()
 class ItemModel extends Equatable {
   @JsonKey(name: "object")

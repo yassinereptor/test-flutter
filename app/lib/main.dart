@@ -6,11 +6,14 @@ import 'package:popina_flutter_test/features/dashboard/presentation/pages/dashbo
 import 'core/injectable/injection.dart';
 
 Future<void> main() async {
+  // Insure widgets loaded (required by DotEnv)
   WidgetsFlutterBinding.ensureInitialized();
+  // Environment variables initializition
   final environment = Env.dev;
   configureInjection(environment);
   await dotenv.load(fileName: '.env/.env.$environment');
   EquatableConfig.stringify = true;
+  // Main App Run
   runApp(Application());
 }
 
@@ -33,6 +36,7 @@ class _ApplicationState extends State<Application> {
     return MaterialApp(
       title: "Popina Flutter Test",
       debugShowCheckedModeBanner: false,
+      // Set text global font and color theme
       theme: ThemeData(
         textTheme: TextTheme(
       bodyText1: TextStyle(
@@ -89,6 +93,7 @@ class _ApplicationState extends State<Application> {
       )
     ),
       ),
+      // Serve dashboard page
       home: DashboardPage(),
     );
   }

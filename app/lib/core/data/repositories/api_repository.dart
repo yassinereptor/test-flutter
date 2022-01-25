@@ -9,6 +9,7 @@ import 'package:popina_flutter_test/core/errors/exceptions/exception.dart';
 import 'package:popina_flutter_test/core/errors/failures/failure.dart';
 import 'package:popina_flutter_test/core/network/network_info.dart';
 
+// Api respository
 @Injectable(as: IApiRepository)
 class ApiRepository implements IApiRepository {
   final IApiRemoteDataSource _apiRemoteDataSource;
@@ -19,14 +20,18 @@ class ApiRepository implements IApiRepository {
     this._networkInfo,
   );
 
+  // Error managment by returning Either object to get either failure or data in case of success
   @override
   Future<Either<Failure, TillModel>> getData() async {
     try {
+      // Check network
       final isConnected = await _networkInfo.isConnected;
       if (isConnected == false) return Left(NetworkFailure());
       final response = await _apiRemoteDataSource.getData();
+      // Return data in case of success
       return Right(response);
-    } on ServerExeption catch (e) {
+    } on ServerException catch (e) {
+      // Return ServerFailure in case of server error
       return Left(ServerFailure(
         status: e.status!,
         message: e.message!,

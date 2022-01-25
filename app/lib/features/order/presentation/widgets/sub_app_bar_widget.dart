@@ -16,6 +16,7 @@ class SubAppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Calc price and quantity by item group
     int quantity = 0;
     double price = 0;
 

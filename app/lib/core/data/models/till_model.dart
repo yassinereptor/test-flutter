@@ -5,6 +5,7 @@ import 'order_model.dart';
 
 part 'till_model.g.dart';
 
+// Global Model
 @JsonSerializable()
 class TillModel extends Equatable {
   @JsonKey(name: "object")

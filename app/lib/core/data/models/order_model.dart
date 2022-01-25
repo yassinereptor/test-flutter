@@ -5,6 +5,7 @@ import 'item_model.dart';
 
 part 'order_model.g.dart';
 
+// Order Model
 @JsonSerializable()
 class OrderModel extends Equatable {
   @JsonKey(name: "object")

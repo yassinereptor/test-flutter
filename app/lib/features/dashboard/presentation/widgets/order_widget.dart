@@ -11,6 +11,7 @@ class OrderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Calc price string by accumilating order's items princes and convert it to string with a precision of 2
     double price = 0;
     orderModel.items!.forEach((item) {
       price += item.price!;
@@ -62,6 +63,7 @@ class OrderWidget extends StatelessWidget {
                         if (orderModel.items!.isNotEmpty)
                         Row(
                           children: [
+                            // Devide by point to get the bold fist part of the floating number and the regular second
                             priceStr.split(".")[0].text.bold.xl3.make(),
                             ("," + priceStr.split(".")[1] + " " + (orderModel.items!.isNotEmpty ? orderModel.items!.first.currency! : "")).text.xl3.make(),
                           ],

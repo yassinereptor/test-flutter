@@ -13,6 +13,7 @@ class ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Calc price by accumilating order's items princes
     double price = 0;
     itemQuantityModel.itemModel.forEach((item) {
       price += item.price!;

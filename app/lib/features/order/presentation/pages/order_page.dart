@@ -10,6 +10,7 @@ import 'package:popina_flutter_test/features/order/presentation/widgets/item_wid
 import 'package:popina_flutter_test/features/order/presentation/widgets/sub_app_bar_widget.dart';
 
 
+// Order Page
 class OrderPage extends StatelessWidget {
   OrderModel orderModel;
   late List<ItemQuantityModel> itemQuantityList;
@@ -45,10 +46,12 @@ class OrderPage extends StatelessWidget {
     );
   }
 
+  // Group items by id and populate the [itemQuantityList] List
   void calcQuantity() {
     itemQuantityList = [];
     List<ItemModel> itemList = [...orderModel.items!];
 
+    // [groupBy] By using (collection) package 
     var groupedArray = groupBy(orderModel.items!, (ItemModel obj) => obj.id);
     groupedArray.forEach((key, value) {
       itemQuantityList.add(ItemQuantityModel(itemModel: value, quantity: value.length));

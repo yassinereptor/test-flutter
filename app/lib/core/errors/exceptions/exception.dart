@@ -1,8 +1,10 @@
-class ServerExeption implements Exception {
+// Server Exception
+class ServerException implements Exception {
   final int? status;
   final String? message;
 
-  ServerExeption({this.status, this.message});
+  ServerException({this.status, this.message});
 }
 
-class NetworkExeption implements Exception {}
+// Network Exception
+class NetworkException implements Exception {}

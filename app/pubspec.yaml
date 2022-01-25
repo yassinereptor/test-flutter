@@ -49,8 +49,6 @@ dependencies:
   get_it: ^7.0.0
   # A pure Dart utility library that checks for an internet connection
   internet_connection_checker: ^0.0.1+1
-  # A Flutter package for easy navigation management.
-  seafarer: ^0.1.0
   # Annotations for freezed.
   freezed_annotation: ^0.14.2
   # A powerful Http client for Dart, which supports Interceptors, Global
@@ -66,8 +64,6 @@ dependencies:
   flutter_dotenv: ^5.0.0
   # Pull to Refresh swipe indicator
   pull_to_refresh: ^2.0.0
-  # Spinner Pack
-  flutter_spinkit: ^5.1.0
   # Manipulate arrays
   collection: ^1.15.0
 

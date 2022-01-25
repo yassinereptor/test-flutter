@@ -53,6 +53,7 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
     Failure? failure;
     TillModel? tillModel;
 
+    // Return (loadingInProgress) at first to show the Loading message
     yield state.copyWith(type: ApiStateType.loadingInProgress());
     (await _apiRepository
         .getData()).fold((f) {
@@ -61,8 +62,10 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       tillModel = value;
     });
     if (failure != null)
+      // On error a failue returned depends on the error type
       yield state.copyWith(type: ApiStateType.loadingFailed(failure!));
     else 
+      // On Success the data will be returned to populate page with orders
       yield state.copyWith(
                 type: ApiStateType.loadingSuccess(),
                 tillModel: tillModel,

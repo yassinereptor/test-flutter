@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 
+// Init base options for dio "a HTTP client" with timeout and base link
 @module
 abstract class IDioModule {
   @lazySingleton

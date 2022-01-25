@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+// Calss to convert color hex string to Color object
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
     hexColor = hexColor.toUpperCase().replaceAll("#", "");
