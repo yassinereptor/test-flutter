@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:popina_flutter_test/core/data/models/item_model.dart';
 import 'package:popina_flutter_test/core/widgets/app_bar_widget.dart';
 import 'package:popina_flutter_test/features/order/presentation/widgets/item_widget.dart';
 import 'package:popina_flutter_test/features/order/presentation/widgets/sub_app_bar_widget.dart';
@@ -36,10 +37,10 @@ class _OrderPageState extends State<OrderPage> {
             ListView(
               shrinkWrap: true,
               children: [
-                ItemWidget(color: Colors.greenAccent, quantity: 2, title: "Velouté", price: 89.0,),
-                ItemWidget(color: Colors.brown, quantity: 2, title: "Velouté", price: 8.0,),
-                ItemWidget(color: Colors.brown, quantity: 2, title: "Velouté", price: 8.0,),
-                ItemWidget(color: Colors.orange, quantity: 2, title: "Velouté", price: 8.0,),
+                ItemWidget(itemModel: ItemModel(color: "#73C399", name: "Velouté", currency: "€", price: 89.0,), quantity: 2),
+                ItemWidget(itemModel: ItemModel(color: "#73C399", name: "Velouté", currency: "€", price: 89.0,), quantity: 2),
+                ItemWidget(itemModel: ItemModel(color: "#73C399", name: "Velouté", currency: "€", price: 89.0,), quantity: 2),
+                ItemWidget(itemModel: ItemModel(color: "#73C399", name: "Velouté", currency: "€", price: 89.0,), quantity: 2),
               ],
             )
           ],
