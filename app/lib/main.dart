@@ -1,10 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:popina_flutter_test/features/dashboard/presentation/pages/dashboard_page.dart';
 
 import 'core/injectable/injection.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final environment = Env.dev;
   configureInjection(environment);
   await dotenv.load(fileName: '.env/.env.$environment');
@@ -31,9 +33,7 @@ class _ApplicationState extends State<Application> {
     return MaterialApp(
       title: "Popina Flutter Test",
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Container(),
-      ),
+      home: DashboardPage(),
     );
   }
   
