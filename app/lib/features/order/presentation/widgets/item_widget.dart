@@ -1,37 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:popina_flutter_test/core/widgets/app_bar_widget.dart';
+import 'package:velocity_x/velocity_x.dart';
 
-class ItemWidget extends StatefulWidget {
-  ItemWidget({Key? key}) : super(key: key);
+class ItemWidget extends StatelessWidget {
+  Color color;
+  int quantity;
+  String title;
+  double price;
 
-  @override
-  _ItemWidgetState createState() => _ItemWidgetState();
-}
-
-class _ItemWidgetState extends State<ItemWidget> {
-
-  @override
-  void initState() {
-
-  }
+  ItemWidget({Key? key, required this.color,
+  required this.quantity,
+  required this.title,
+  required this.price}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.greenAccent
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Row(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: color
+            ),
+            width: 50,
+            height: 40,
+            child: Center(child: quantity.text.bold.xl2.gray100.make(),),
           ),
-          width: 40,
-          height: 30,
-          child: Center(child: Text("3"),),
-        ),
-        Text("Velouté"),
-        Spacer(),
-        Text("8,00€"),
-      ],
+          SizedBox(width: 20),
+          title.text.bold.xl2.color(color).make(),
+          Spacer(),
+          (price.toStringAsFixed(2) + "€").text.xl2.color(color).make(),
+        ],
+      ),
     );
   }
   

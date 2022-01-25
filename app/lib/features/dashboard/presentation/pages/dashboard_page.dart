@@ -26,14 +26,18 @@ class _DashboardPageState extends State<DashboardPage> {
           MediaQuery.of(context).size.width,
           kToolbarHeight
         ),
-        child: AppBarWidget(),
+        child: AppBarWidget(title: "3 commandes",),
       ),
-        body: ListView(
-          children: [
-            OrderWidget(),
-            OrderWidget(),
-            OrderWidget(),
-          ],
+      backgroundColor: Colors.grey[100],
+        body: Padding(
+          padding: const EdgeInsets.only(top: 5),
+          child: ListView(
+            children: [
+              OrderWidget(),
+              OrderWidget(),
+              OrderWidget(),
+            ],
+          ),
         ),
       ),
     );

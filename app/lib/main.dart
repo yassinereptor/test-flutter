@@ -33,6 +33,62 @@ class _ApplicationState extends State<Application> {
     return MaterialApp(
       title: "Popina Flutter Test",
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: TextTheme(
+      bodyText1: TextStyle(
+        color: Colors.blueGrey,
+        fontFamily: "SegoeUi",
+      ),
+      bodyText2: TextStyle(
+        color: Colors.blueGrey,
+        fontFamily: "SegoeUi",
+      ),
+      headline1: TextStyle(
+        color: Colors.blueGrey,
+        fontFamily: "SegoeUi",
+      ),
+      headline2: TextStyle(
+        color: Colors.blueGrey,
+        fontFamily: "SegoeUi",
+      ),
+      headline3: TextStyle(
+        color: Colors.blueGrey,
+        fontFamily: "SegoeUi",
+      ),
+      headline4: TextStyle(
+        color: Colors.blueGrey,
+        fontFamily: "SegoeUi",
+      ),
+      headline5: TextStyle(
+        color: Colors.blueGrey,
+        fontFamily: "SegoeUi",
+      ),
+      headline6: TextStyle(
+        color: Colors.blueGrey,
+        fontFamily: "SegoeUi",
+      ),
+      subtitle1: TextStyle(
+        fontFamily: "SegoeUi",
+        color: Colors.blueGrey,
+      ),
+      subtitle2: TextStyle(
+        fontFamily: "SegoeUi",
+        color: Colors.blueGrey,
+      ),
+      button: TextStyle(
+        fontFamily: "SegoeUi",
+        color: Colors.blueGrey,
+      ),
+      caption:  TextStyle(
+        fontFamily: "SegoeUi",
+        color: Colors.blueGrey,
+      ),
+      overline:   TextStyle(
+        fontFamily: "SegoeUi",
+        color: Colors.blueGrey,
+      )
+    ),
+      ),
       home: DashboardPage(),
     );
   }

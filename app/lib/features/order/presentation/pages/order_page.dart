@@ -27,18 +27,19 @@ class _OrderPageState extends State<OrderPage> {
           MediaQuery.of(context).size.width,
           kToolbarHeight
         ),
-        child: AppBarWidget(backBtn: true,),
+        child: AppBarWidget(backBtn: true, title: "table 8",),
       ),
+      backgroundColor: Colors.grey[100],
         body: Column(
           children: [
             SubAppBarWidget(),
             ListView(
               shrinkWrap: true,
               children: [
-                ItemWidget(),
-                ItemWidget(),
-                ItemWidget(),
-                ItemWidget(),
+                ItemWidget(color: Colors.greenAccent, quantity: 2, title: "Velouté", price: 89.0,),
+                ItemWidget(color: Colors.brown, quantity: 2, title: "Velouté", price: 8.0,),
+                ItemWidget(color: Colors.brown, quantity: 2, title: "Velouté", price: 8.0,),
+                ItemWidget(color: Colors.orange, quantity: 2, title: "Velouté", price: 8.0,),
               ],
             )
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:popina_flutter_test/core/widgets/app_bar_widget.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class SubAppBarWidget extends StatefulWidget {
   SubAppBarWidget({Key? key}) : super(key: key);
@@ -18,35 +19,42 @@ class _SubAppBarWidgetState extends State<SubAppBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      color: Colors.white,
       height: kToolbarHeight + 10,
       child: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Center(
-                  child: Text("6 produits")
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: "6 produits".text.xl2.make()
+                  ),
                 ),
-              ),
-              Center(
-                child: Container(
-                  color: Colors.grey,
-                  width: 3,
-                  height: kToolbarHeight - 20,
-                )
-              ),
-              Expanded(child: Center(
-                      child: Text("48,00 €")
-                    )),
-            ],
+                Center(
+                  child: Container(
+                    color: Colors.grey[100],
+                    width: 2,
+                    height: kToolbarHeight - 20,
+                  )
+                ),
+                Expanded(child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    "48".text.bold.blue400.xl3.make(),
+                    ",50 €".text.blue400.xl3.make(),
+                  ],
+                )),
+              ],
+            ),
           ),
           Row(
             children: [
               Expanded(child: Container()),
           Expanded(child: Container(
-            color: Colors.blue,
-            height: 10,
+            color: Colors.blue[400],
+            height: 5,
           ))
             ],
           ),

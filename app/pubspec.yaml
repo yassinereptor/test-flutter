@@ -66,6 +66,8 @@ dependencies:
   flutter_dotenv: ^5.0.0
   # Pull to Refresh swipe indicator
   pull_to_refresh: ^2.0.0
+  # Spinner Pack
+  flutter_spinkit: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -130,3 +132,17 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  fonts:
+    - family: SegoeUi
+      fonts:
+        - asset: assets/fonts/Segoe-UI.ttf
+          weight: 400
+        - asset: assets/fonts/Segoe-UI-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Segoe-UI-Bold.ttf
+          weight: 600
+        - asset: assets/fonts/Segoe-UI-Bold-Italic.ttf
+          weight: 600
+          style: italic
