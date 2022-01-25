@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:popina_flutter_test/core/widgets/app_bar_widget.dart';
+import 'package:popina_flutter_test/features/order/data/models/item_quantity_model.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class SubAppBarWidget extends StatefulWidget {
-  SubAppBarWidget({Key? key}) : super(key: key);
+class SubAppBarWidget extends StatelessWidget {
+  List<ItemQuantityModel> itemQuantityList;
 
-  @override
-  _SubAppBarWidgetState createState() => _SubAppBarWidgetState();
-}
-
-class _SubAppBarWidgetState extends State<SubAppBarWidget> {
-
+  SubAppBarWidget({Key? key, required this.itemQuantityList}) : super(key: key);
+  
   @override
   void initState() {
 
@@ -19,6 +16,18 @@ class _SubAppBarWidgetState extends State<SubAppBarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    int quantity = 0;
+    double price = 0;
+
+    itemQuantityList.forEach((item) {
+      quantity += item.quantity;
+      item.itemModel.forEach((element) {
+        price += element.price!;
+      });
+    });
+
+    String priceStr = price.toStringAsFixed(2);
+
     return Container(
       color: Colors.white,
       height: kToolbarHeight + 10,
@@ -29,7 +38,7 @@ class _SubAppBarWidgetState extends State<SubAppBarWidget> {
               children: [
                 Expanded(
                   child: Center(
-                    child: "6 produits".text.xl2.make()
+                    child: (quantity.toString() + " produits").text.xl2.make()
                   ),
                 ),
                 Center(
@@ -42,8 +51,8 @@ class _SubAppBarWidgetState extends State<SubAppBarWidget> {
                 Expanded(child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    "48".text.bold.blue400.xl3.make(),
-                    ",50 €".text.blue400.xl3.make(),
+                    priceStr.split(".")[0].text.bold.blue400.xl3.make(),
+                    ("," + priceStr.split(".")[1] + " " + (itemQuantityList.isNotEmpty ? itemQuantityList.first.itemModel.first.currency! : "")).text.blue400.xl3.make(),
                   ],
                 )),
               ],
