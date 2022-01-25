@@ -1,30 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:popina_flutter_test/core/data/models/order_model.dart';
 import 'package:popina_flutter_test/features/order/presentation/pages/order_page.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class OrderWidget extends StatefulWidget {
-  OrderWidget({Key? key}) : super(key: key);
+class OrderWidget extends StatelessWidget {
+  OrderModel orderModel;
 
-  @override
-  _OrderWidgetState createState() => _OrderWidgetState();
-}
-
-class _OrderWidgetState extends State<OrderWidget> {
-
-  @override
-  void initState() {
-
-  }
+  OrderWidget({Key? key, required this.orderModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double price = 0;
+    orderModel.items!.forEach((item) {
+      price += item.price!;
+    });
+    String priceStr = price.toStringAsFixed(2);
     return Padding(
       padding: EdgeInsets.only(left: 10, right: 10),
       child: InkWell(
         onTap: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => OrderPage()),
+            MaterialPageRoute(builder: (context) => OrderPage(orderModel: orderModel,)),
           ),
         child: Card(
           color: Colors.white,
@@ -40,7 +37,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                   height: 100,
                   width: 100,
                   child: Center(
-                    child: "8".text.xl3.white.bold.make()
+                    child: orderModel.table!.text.xl3.white.bold.make()
                   ),
                 ),
                 Expanded(
@@ -56,16 +53,17 @@ class _OrderWidgetState extends State<OrderWidget> {
                               children: [
                                 Icon(Icons.face, color: Colors.blueGrey),
                                 SizedBox(width: 10,),
-                                "3".text.xl2.make()
+                                orderModel.guests!.text.xl2.make()
                               ],
                             ),
-                            "18:20".text.xl2.make()
+                            orderModel.date!.text.xl2.make()
                           ],
                         ),
+                        if (orderModel.items!.isNotEmpty)
                         Row(
                           children: [
-                            "48".text.bold.xl3.make(),
-                            ",50 €".text.xl3.make(),
+                            priceStr.split(".")[0].text.bold.xl3.make(),
+                            ("," + priceStr.split(".")[1] + " " + (orderModel.items!.isNotEmpty ? orderModel.items!.first.currency! : "")).text.xl3.make(),
                           ],
                         )
                       ],

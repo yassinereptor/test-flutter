@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:popina_flutter_test/core/data/models/item_model.dart';
+import 'package:popina_flutter_test/core/data/models/order_model.dart';
 import 'package:popina_flutter_test/core/widgets/app_bar_widget.dart';
 import 'package:popina_flutter_test/features/order/presentation/widgets/item_widget.dart';
 import 'package:popina_flutter_test/features/order/presentation/widgets/sub_app_bar_widget.dart';
 
-class OrderPage extends StatefulWidget {
-  OrderPage({Key? key}) : super(key: key);
 
-  @override
-  _OrderPageState createState() => _OrderPageState();
-}
+class OrderPage extends StatelessWidget {
+  OrderModel orderModel;
 
-class _OrderPageState extends State<OrderPage> {
+  OrderPage({Key? key, required this.orderModel}) : super(key: key);
 
   @override
   void initState() {
